@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>语句</title>
+</head>
+<body>
+  <!-- if 语句 -->
+  <!-- do while 语句 
+    在对条件表达式求值之前，循环体内的代码至少会被执行一次，（只有在循环体内的代码执行之后，才会测试出口条件）
+  -->
+  <!-- while
+      属于前测试循环语句，也就是说 在循环体内的代码被执行之前，就会对出口条件求值，因此，循环体内的代码有可能永远不会被执行
+  -->
+  <!-- for
+      属于前测试循环语句，可以在执行循环之前初始化变量和定义循环后要执行代码，由于ECMAScript中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到
+      此外，for语句的初始化状态、控制表达式和循环后的表达式都是可选的，将这三个表达式全部省略，就会创建一个无限循环
+      而只给出控制表达式实际上就把for循环转换成了while循环
+  -->
+  <!-- for-in
+      一种精准的迭代语句，可以用来枚举对象
+      ECMAScript 对象的属性没有顺序，因此，通过for-in 循环输出的属性名的顺序是不可预测的，具体来说，所有属性都会被返回一次，但是返回的先后顺序可能会因浏览器而异
+      但是，如果表示要迭代的对象的变量值为null或undefined，for-in语句就会抛出错误，而ECMAScript更正这个行为，不在是报错，而是不执行循环体，
+      考虑到兼容性，在使用for-in循环之前，先检测确认该对象是不是null或undefined
+  -->
+  <!-- label
+      在代码中添加标签
+      语法是：
+      label：statement
+  -->
+</body>
+<script>
+  /* do while 循环 */
+  var i=0;
+  do{
+    i+=2;
+  }while(i<10)
+  console.log(i);
+
+/* while 语句 */
+  var j=0;
+  while(j<10){
+    j+= 2;
+  }
+  console.log("while:"+j);
+
+  /* for 语句 */
+ /*  for(;;){
+    doSomething();
+  } */
+  /* for-in 语句 */
+  for(var propName in window){
+    document.write(propName+"<br/>");
+
+  }
+  /* label */
+  var count=6;
+  start:for(var i=0;i<count;i++){
+    console.log(i);
+
+  }
+  //这个例子中的start标签可以在将来由break或continue语句引用，
+  //加标签的语句要与for语句等循环语句配合使用
+
+  /* break和continue语句
+    * break语句会立即退出循环 强制继续执行循环后面的语句；
+    * continue虽然也会立即退出循环，但是退出循环之后会从循环顶部继续执行
+  
+   */
+   var num =0;
+   for(var i =1;i<10;i++){
+     if(i%5==0){
+       break;
+
+     }
+     num++;
+   }
+   console.log("break-num:"+num);
+   var num =0;
+   for(var i =1;i<10;i++){
+     if(i%5==0){
+       continue;
+     }
+     num++;
+   }
+   console.log("continue-num:"+num);
+   //当变量i等于5的时候 循环会在num值再次递增之前退出，接下来执行下一次循环，也就是i等于6的循环
+   //break和continue语句都可以与label语句联合使用，从而返回代码中的特定位置，这种联合使用的情况多发生在循环嵌套的情况下
+   var num = 0;
+   outermost:
+   for(var i=0;i<10;i++){
+     for(var j=0;j<10;j++){
+       if(i==5&& j==5){
+         break outermost;
+       }
+       num++;
+     } 
+   }
+   console.log("outermost:"+num);
+//outermost标签表示外部的for语句，添加这个标签的结果将导致break语句不仅会退出内部的for语句还会退出外部的for语句，当变量i和j都为5的时候，num的值刚好就是55
+//continue语句也同样可以这样与label语句连用
+
+
+/* with语句
+  * 由于大量使用with语句会导致性能下降，同时也会给调试代码造成困难，并且严格模式下不允许使用with语句，否则将视为语法错误
+  * 所以不推荐使用with语句 在这里也不细说
+ */
+
+ /* switch 语句 */
+ switch (i){
+   case 25:
+    console.log('25');
+    break;
+   case 35:
+    console.log('35');
+    break;
+   default:
+   console.log('other');
+ }
+</script>
+
+</html>
