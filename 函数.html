@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>函数基础讲解</title>
+</head>
+<body>
+  
+</body>
+<script>
+  /* 函数
+    * ECMAScript 中的函数使用function 关键字来声明，后跟一组参数以及函数体
+   */
+   //  函数的基本使用
+   function say(name,message){
+     console.log('hello '+name+","+message);
+     
+   }
+   say('hy','how are you today?');
+
+   //ECMAScript 中的函数在定义时不必指定是否返回值，实际上，任何函数在任何时候都可以通过return语句后跟要返回的值来实现返回值
+   function sun (num1,num2){
+     return num1 + num2;
+   }
+   var result = sun(1,32);
+   console.log(result);
+   //除了return以外 ，没有任何声明表示该函数会返回一个值
+   //并且位于return之后的任何代码都永远不会执行，比如
+   
+   function sum1(num1, num2){
+     return num1 + num2;
+     alert('hell0');//这句话永远不会执行
+   }
+   console.log(sum1(2,5));
+   //另外 return语句也可以不带有任何返回值，
+   //出现这种情况一般是因为需要提前停止函数执行而又不需要返回值得情况下，
+   //结果就是函数在停止执行后将返回undefined值，比如
+   function sayHi(name,message){
+     return;
+     
+   }
+   console.log(sayHi());
+   /* 推荐做法:
+        要么让函数始终返回一个值，要么永远没有返回值，否则会给调试代码带来不便
+
+      严格模式对函数的一些限制：
+        不能把函数命名为eval或者arguments
+        不能把参数命名为eval或arguments
+        不能出现两个命名参数同名的情况
+      以上情况如果发生，就会导致语法错误，代码无法执行
+    */
+
+    /* 理解参数
+    
+     */
+</script>
+</html>
