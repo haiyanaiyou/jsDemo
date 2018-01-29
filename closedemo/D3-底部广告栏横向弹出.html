@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>固金所房速贷活动</title>
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+        <style type="text/css">
+        	body{
+        		background:#ffebbd;
+        	}
+        	
+        	img{
+        		width:100%;
+        		display:block;
+        	}
+        	
+        	.fsdimg4{
+        		margin-top:-115px;
+        	}
+        	.fsdimg5{
+        		position:fixed;
+        		bottom:0;
+        		z-index:10;
+        	}
+        	.fsdimg6{
+        		width:50px;
+        		height:50px;
+        		cursor: pointer;
+        		position:absolute;
+        		top:16%;
+        		right:135px;
+        		z-index:15;
+        	}
+        	.fsdimg7{
+        		width:50px;
+        		height:50px;
+        		cursor: pointer;
+        		position:absolute;
+        		top:55%;
+        		right:25px;
+        		z-index:15;
+        		display:none;
+        	}
+        	
+        	.fsdimg9{
+        		cursor: pointer;
+        		position:fixed;
+        		bottom:0;
+        		z-index:10;
+        		left: -250px;
+        		display: none;
+        	}
+		</style>
+    </head>
+    <body>
+    	<img class="fsdimg4" src="img/fsdexp.png" />
+    	<div class="fsdimg5">
+    		<div style="position:relative">
+    			<img class="fsdimg8" src="img/fsdbtm.png" />
+    			<img class="fsdimg6" src="img/fsdclose.png" />
+    			<img class="fsdimg9" src="img/hideleft.png" />
+    		</div>
+    	</div>
+    </body>
+    <script>
+    	$('.fsdimg9').click(function(){
+				$('.fsdimg5').animate({left:0},'slow');
+				$('.fsdimg5').find('.fsdimg6').fadeIn('slow');
+				$(this).hide();
+				$(this).css("left","-250px");
+		})
+    
+    	$('.fsdimg6').click(function(){
+    		$(".fsdimg8").width($(window).width());
+    		$('.fsdimg5').animate({left:-$(window).width()},'slow',function(){
+	    			$(".fsdimg9").height($(".fsdimg8").height());
+					$(".fsdimg9").width($(".fsdimg8").height()*(320/210));
+					$(".fsdimg9").show();
+					$(".fsdimg9").animate({left:0},'slow')
+				});
+			$(this).fadeOut('fast');
+		})
+    </script>
+</html>

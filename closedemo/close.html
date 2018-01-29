@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>关闭弹窗</title>
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    .demo{
+      height: 200px;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      transition: width 2s;
+      -moz-transition: width 2s;	/* Firefox 4 */
+      -webkit-transition: width 2s;	/* Safari 和 Chrome */
+      -o-transition: width 2s;	/* Opera */
+    }
+    .close{
+     position: absolute;
+     top: 10px;
+     right: 320px;
+     cursor: pointer;
+     width: 40px;
+     height: 40px;
+     line-height: 40px;
+     border: 2px solid #888888;
+     border-radius: 20px;
+     text-align: center;
+
+    }
+    .left1{
+      float: left;
+    }
+    .s1{
+      width: 900px;
+      height: 200px;
+      background: #888888;
+      transition: width 2s;
+      -moz-transition: width 2s;	/* Firefox 4 */
+      -webkit-transition: width 2s;	/* Safari 和 Chrome */
+      -o-transition: width 2s;	/* Opera */
+
+    }
+    .s2{
+      width: 600px;
+      height: 200px;
+      background: red;
+      position: relative;
+      transition: background 2s;
+      -moz-transition: background 2s;	/* Firefox 4 */
+      -webkit-transition: background 2s;	/* Safari 和 Chrome */
+      -o-transition: background 2s;	/* Opera */
+    }
+    .showin{
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      cursor: pointer;
+
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="demo">
+    <div class="left1 s1"></div>
+    <div class="left1 s2"></div>
+    <div class="close">X</div>
+    <div class="showin"> > </div>
+  </div>
+</body>
+<script>
+  $(function(){
+    $('.close').click(function(){
+      $('.demo').css('width','600px');
+      $('.s1').css('width','0');
+      $('.showin').css('display','block');
+      $('.close').css('display','none');
+      $('.s2').delay('slow').css('background','green');
+    });
+    $('.showin').click(function(){
+      $('.demo').css('width','100%');
+      $('.s1').css('width','900px');
+      $('.showin').css('display','none');
+      $('.close').css('display','block');
+      $('.s2').css('background','red');
+    });
+
+  });
+</script>
+</html>

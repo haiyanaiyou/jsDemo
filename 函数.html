@@ -53,7 +53,29 @@
     */
 
     /* 理解参数
-    
+        ECMAScript 函数不介意传递进来多少参数，也不在乎传递进来的参数是什么类型，原因是ECMAScript中的参数在内部是用一个数组来表示的，
+        实际上，在函数体内可以通过arguments对象来访问这个参数数组，从而获取传递给函数的每一个参数
+        ECMAScript函数的一个重要特点：
+          命名的参数只提供便利，但不是必需的
      */
+    //  通过访问arguments对象的length属性可以获知有多少个参数传递给了函数
+
+        function howMany(){
+          console.log(arguments.length);
+        }
+        howMany(23,'ght');
+        howMany();
+
+        function doAdd(){
+          if(arguments.length == 1){
+            console.log(arguments[0] +10);
+
+          }else{
+            console.log(arguments[1] +'20');
+          }
+        }
+        doAdd('20',3);
+        doAdd(1);
+        // ECMAScript中的所有参数传递的都是值 
 </script>
 </html>
