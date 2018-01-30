@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js clone 相关知识点</title>
+</head>
+<body>
+  <!-- jquery中 clone()函数代表着克隆 
+      $().clone(true) 加true代表着深拷贝  拷贝的是整个内容 
+                      加false代表着浅拷贝
+  -->
+</body>
+<script>
+  /* 基本类型的克隆 */
+  var a ='1234';
+  var b = a;
+  console.log("1:"+b);
+  a = '88888';
+  console.log("2:"+b);
+  /* 把一个值赋给一个变量的时候，值改变的时候 变量并不会受到影响 */
+
+  /* 复杂类型的克隆 */
+  //克隆数组
+  /* var arr1=[1,2,3,4];
+  var arr2 = arr1;
+  console.log("1:"+arr2);
+  arr1 = [3,3,3,3];
+  console.log("2:"+arr1);
+  console.log("2:"+arr2); */
+  var aArr = [0,1,2,3];  
+  var m = aArr;  
+  console.log(m);
+  aArr[0]=3;  //在js中  数组或者对象的复制如果是通过 = 来进行复制，只是简单的浅拷贝
+  console.log(m);
+  /* 数组深拷贝的实现方法 */
+  //方法一： 通过for循环实现深拷贝
+    var arr = [8,2,3,4];
+    var arr3 = copy(arr);
+    function copy(arr){
+      let s = [];
+      for(var i=0;i<arr.length;i++){
+        s.push(arr[i]);
+
+      }
+      return s;
+
+    }
+    console.log(arr3);
+    //方法二：slice 实现数组的深拷贝 { 将数组的全部抽离 实现深拷贝}
+    // [slice:复制数组 返回值是复制到的新数组 写上数值之后 不包含被复制的最后一项]
+    var a = [1,2,3,4,5,6];
+    var b = a.slice(0);
+    b[1]=9;
+    console.log(b);
+
+    //方法三： 使用concat实现数组的深拷贝
+    //[把一个数组和另一个数组拼接在一起 返回拼接好的数组]
+
+    var a1 = [5,5,5,5];
+    var a2 = a1.concat();
+    a2[0]=7;
+    console.log(a2);
+
+    //方法四：（最新最简便的实现方式）
+    //ES6扩展运算符实现数组的深拷贝
+    /* 
+      扩展运算符（ spread ）是三个点（...）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。
+       console.log(...[1,2,3]);  //1 2 3
+       console.log([1,2,...[4,5,6],5,6]);// 1 2 4 5 6 5 6
+     */
+   var b1 = [9,9,9,9];
+   var [...b2] = b1;
+   b2[1]=6;
+   console.log(b2);
+
+   /* 对象的深拷贝
+      对象的深拷贝有三种实现方式：
+        for循环
+        转换成json 在转换成对象实现对象的深拷贝
+        ES6扩展运算符实现对象的深拷贝
+    */
+    // for循环实现对象的深拷贝
+    var a ={
+      name:'abg',
+      age: '12',
+      sex:'fale'
+    };
+    var b = copyObj(a);
+    function copyObj(obj){
+      var res = {};
+      for(var key in obj){
+        res[key]=obj[key];
+
+      }
+      return res;
+
+    }
+    console.log(b);
+
+    //转换成json 在转换成对象实现对象的深拷贝
+    var a ={
+      name:'abg',
+      age: '12',
+      sex:'fale'
+    };
+    var a3= JSON.parse(JSON.stringify(a));
+    console.log(a3);
+
+    //扩展运算符实现对象的深拷贝
+    var obj = {
+      name: 'FungLeo',
+      sex: 'man',
+      old: '18'
+    };
+    var { ...obj2 } = obj;
+    obj.old = '22';
+    console.log(obj);
+    console.log(obj2);
+</script>
+</html>
